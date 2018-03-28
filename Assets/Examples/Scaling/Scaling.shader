@@ -37,10 +37,10 @@
 			float4 worldVertex = mul( unity_ObjectToWorld, v.vertex );
 			float4 delta = _Pivot - worldVertex;
 			
-			float2 texOffset = float2(_Time.y * _Speed, 0.0);
-			float4 lut = 1-tex2Dlod (_CurveTex, float4(texOffset,0,0));
+			float2 texcoord = float2(_Time.y * _Speed, 0.0);
+			float4 curve = 1-tex2Dlod (_CurveTex, float4(texcoord,0,0));
 
-			v.vertex.xyz += lut.rgb * delta.xyz;
+			v.vertex.xyz += curve.rgb * delta.xyz;
 		}
 
 		void surf (Input IN, inout SurfaceOutputStandard o)

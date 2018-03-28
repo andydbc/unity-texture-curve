@@ -31,9 +31,9 @@
 
 		void vert (inout appdata_full v) 
 		{
-			float2 texOffset = float2(_Time.y * _Speed, 0.0);
-			float4 lut = tex2Dlod (_CurveTex, float4(texOffset,0,0));
-			v.vertex.xyz += lut.rgb * _Amount.xyz;
+			float2 texcoord = float2(_Time.y * _Speed, 0.0);
+			float4 curve = tex2Dlod (_CurveTex, float4(texcoord,0,0));
+			v.vertex.xyz += curve.rgb * _Amount.xyz;
 		}
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {

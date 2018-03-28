@@ -34,18 +34,18 @@
 
 		void surf (Input IN, inout SurfaceOutputStandard o)
 		{
-			float m = tex2D (_MaskTex, IN.uv_MainTex).r;
-			float f = tex2D (_CurveTex, float2(_Time.y * _Speed, 0)).g;
-			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+			float emissionMask = tex2D (_MaskTex, IN.uv_MainTex).r;
+			float curve = tex2D (_CurveTex, float2(_Time.y * _Speed, 0)).g;
+			fixed4 color = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 
 			float scan = lerp(0.2, 1.0, step(frac(IN.worldPos.y * 8.0 + _Time.w * 0.2), 0.5) * 0.85);
+			o.Emission = color * emissionMask * curve * scan * 10;
 
-			o.Albedo = c.rgb;
-			o.Emission = c * m * f * scan * 10;
+			o.Albedo = color.rgb;
 			o.Normal = UnpackNormal (tex2D (_NormalTex, IN.uv_MainTex));
 			o.Metallic = tex2D (_MetallicTex, IN.uv_MainTex);
 			o.Smoothness = 1-tex2D (_RoughnessTex, IN.uv_MainTex);
-			o.Alpha = c.a;
+			o.Alpha = color.a;
 		}
 		ENDCG
 	}
