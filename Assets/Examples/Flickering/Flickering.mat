@@ -27,7 +27,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CurveTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 28529947374183378, guid: 20aefdd3522f4244da554c63d2249092,
+          type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:

@@ -23,7 +23,13 @@ public class RuntimeExample : MonoBehaviour
     {
         if (_curve == null)
             return;
+
+        if (_material == null)
+            return;
+
         _curve.Bake();
+
+        _material.SetTexture("_CurveTex", _curve.Texture);
 
         _preview = new Material(Shader.Find("Hidden/Preview"));
         _preview.hideFlags = HideFlags.DontSave;
@@ -44,21 +50,7 @@ public class RuntimeExample : MonoBehaviour
         if (_material == null)
             return;
 
-        // This is only here to have the possibility to preview changes at runtime.
-
-        if (_renderer.sprite.texture != _curve.Texture)
-        {
-            _renderer.sprite = Sprite.Create(
-               _curve.Texture,
-               new Rect(0, 0, _curve.Resolution, 1),
-               Vector2.zero,
-               100
-           );
-        }
-
         _preview.SetFloat("_Speed", _speed);
-
-        _material.SetTexture("_CurveTex", _curve.Texture);
         _material.SetFloat("_Speed", _speed);
     }
 }

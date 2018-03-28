@@ -27,15 +27,16 @@ public class TextureCurve : ScriptableObject
     public void OnEnable()
     {
         if(_texture == null)
-            Bake();
+            _texture = new Texture2D(_resolution, 1, TextureFormat.ARGB32, false, true);
     }
 
     public void Bake()
     {
-        if (_texture)
-            DestroyImmediate(_texture, true);
+        if (_texture == null)
+            return;
 
-        _texture = new Texture2D(_resolution, 1, TextureFormat.ARGB32, false, true);
+        if (_texture.width != _resolution)
+            _texture.Resize(_resolution, 1);
 
         _texture.wrapMode = _wrapMode;
         _texture.filterMode = _filterMode;
