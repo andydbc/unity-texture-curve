@@ -2,7 +2,8 @@ unity-texture-curve
 ==========
 
 Small example showing how to bake [AnimatedCurve](https://docs.unity3d.com/ScriptReference/AnimationCurve.html) into [Texture2D](https://docs.unity3d.com/ScriptReference/Texture2D.html). <br>
-The baked curves are then used in shaders to animate different kind of values.
+
+This technique can be used to animate all sort of values directly in shaders, it has the main advantage of having almost zero cost on the CPU. <br>
 
 ![screenshot](Screenshots/screen0.gif)
 
