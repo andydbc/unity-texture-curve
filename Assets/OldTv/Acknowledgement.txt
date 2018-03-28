@@ -1,0 +1,15 @@
+OldTv
+--------
+
+This directory contains a model and textures downloaded from Sketchfab.
+
+skfb.ly/6usCJ  
+
+Licence
+--------
+
+https://creativecommons.org/licenses/by/4.0/
+
+Please see Sketchfab Terms page below for further informations.
+
+https://sketchfab.com/terms#ownership
