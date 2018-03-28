@@ -30,12 +30,21 @@ public class RuntimeExample : MonoBehaviour
 
         _renderer = GetComponent<SpriteRenderer>();
         _renderer.material = _preview;
+
+        _renderer.sprite = Sprite.Create(
+               _curve.Texture,
+               new Rect(0, 0, _curve.Resolution, 1),
+               Vector2.zero,
+               100
+           );
     }
 
     void Update()
     {
         if (_material == null)
             return;
+
+        // This is only here to have the possibility to preview changes at runtime.
 
         if (_renderer.sprite.texture != _curve.Texture)
         {
