@@ -36,7 +36,7 @@ public class TextureCurve : ScriptableObject
             return;
 
         if (_texture.width != _resolution)
-            _texture.Resize(_resolution, 1);
+            _texture.Reinitialize(_resolution, 1);
 
         _texture.wrapMode = _wrapMode;
         _texture.filterMode = _filterMode;
