@@ -89,11 +89,18 @@ namespace TextureCurve
             serializedObject.ApplyModifiedProperties();
 
             if (rebuild)
+            {
                 ((TextureCurve)target).Bake();
+            }
+
+            if (GUILayout.Button("Export Texture"))
+            {
+                ExportAsTexture((TextureCurve)target);
+            }
         }
 
         [MenuItem("Assets/Create/Texture Curve")]
-        static void CreateTextureCurveAsset()
+        private static void CreateTextureCurveAsset()
         {
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);
             if (string.IsNullOrEmpty(path))
@@ -111,6 +118,20 @@ namespace TextureCurve
 
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = asset;
+        }
+
+        private static void ExportAsTexture(TextureCurve curve)
+        {
+            string path = EditorUtility.SaveFilePanel("Export Texture", "", "TextureCurve.png", "png");
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
+            curve.Bake();
+            var bytes = ImageConversion.EncodeToPNG(curve.Texture);
+
+            File.WriteAllBytes(path, bytes);
         }
     }
 }
