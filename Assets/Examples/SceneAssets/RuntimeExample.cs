@@ -6,7 +6,7 @@ using UnityEngine;
 public class RuntimeExample : MonoBehaviour
 {
     [SerializeField]
-    TextureCurve _curve = null;
+    TextureCurve.TextureCurve _curve = null;
 
     [SerializeField]
     Material _material = null;

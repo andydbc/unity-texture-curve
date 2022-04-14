@@ -1,0 +1,15 @@
+{
+  "name": "com.github.asus4.texture-curve",
+  "displayName": "Texture Curve",
+  "author": "andydbc",
+  "description": "A tool to bake AnimationCurves to Texture2D",
+  "keywords": [
+    "unity"
+  ],
+  "license": "MIT",
+  "unity": "2021.3",
+  "unityRelease": "0f1",
+  "version": "1.0.0",
+  "type": "tool",
+  "hideInEditor": false
+}
